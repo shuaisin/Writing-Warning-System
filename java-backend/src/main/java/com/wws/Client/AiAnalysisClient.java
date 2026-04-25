@@ -49,7 +49,7 @@ public class AiAnalysisClient {
             }
         } catch (Exception e) {
             // 这里的日志打印可以根据你的审美进行优化，比如“画外之音”检测到信号中断
-            System.err.println("【画外之音预警】AI 服务连接失败: " + e.getMessage());
+            System.err.println("【WWS】AI 服务连接失败: " + e.getMessage());
         }
         
         return null; // 或者返回一个带有默认中位分值的空对象
