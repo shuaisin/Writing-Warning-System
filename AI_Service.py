@@ -7,7 +7,6 @@ import base64
 
 app = FastAPI(title="Inaudible Voice AI Service")
 
-# --- 1. 静态配置 ---
 BAIDU_AK = "qm9PQkpmHxNcZ9muPvgxym29"
 BAIDU_SK = "g1GMnvBGyng53ihI3BU8eazJUDMIDXU2"
 
@@ -18,16 +17,14 @@ NEO4J_URI = "neo4j+s://b84abc8b.databases.neo4j.io"
 NEO4J_USER = "neo4j"
 NEO4J_PWD = "RIssSnTGdtSQUUPxSkE5xxRc7NRxU4w-uPjsjZZDkLM"
 
-# 初始化数据库驱动
 try:
     driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USER, NEO4J_PWD))
 except Exception as e:
     print(f"Neo4j 连接预警: {e}")
 
-# --- 2. 核心功能 ---
+
 
 def get_baidu_token():
-    """获取百度 OCR 访问令牌"""
     url = f"https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id={BAIDU_AK}&client_secret={BAIDU_SK}"
     try:
         res = requests.get(url).json()
@@ -36,7 +33,6 @@ def get_baidu_token():
         return None
 
 def ocr_image_to_text(image_bytes):
-    """百度 OCR：图片转文字"""
     token = get_baidu_token()
     if not token: return "OCR授权失败"
     
@@ -52,11 +48,9 @@ def ocr_image_to_text(image_bytes):
         return "文本识别解析异常"
 
 def query_metaphors(text):
-    """Neo4j：隐喻词检索"""
     metaphors = []
     try:
         with driver.session() as session:
-            # 匹配逻辑：查找作文中是否包含图谱中的敏感词
             result = session.run("MATCH (k:Keyword)-[:REFLECTS]->(d:Dimension) RETURN k.name AS word, d.type AS dim")
             for record in result:
                 if record["word"] in text:
@@ -65,7 +59,7 @@ def query_metaphors(text):
         pass
     return metaphors
 
-# --- 3. 核心业务接口 (供 Java 调用) ---
+
 
 @app.post("/analyze")
 async def analyze_essay(
@@ -73,16 +67,15 @@ async def analyze_essay(
     text: str = Form(None), 
     file: UploadFile = File(None)
 ):
-    # 优先执行逻辑：有传文字用文字，没文字则 OCR 图片
     content = text if text else ocr_image_to_text(await file.read())
     
     if not content or len(content) < 5:
         raise HTTPException(status_code=400, detail="作文内容过短或解析失败")
 
-    # 1. 结合知识图谱提取特征
+    # 知识图谱
     hits = query_metaphors(content)
     
-    # 2. 调用 DeepSeek 进行专家级分析
+    # 调DeepSeek
     prompt = f"""
     [身份]: 小学生心理健康评估专家
     [输入作文]: "{content}"
@@ -111,11 +104,9 @@ async def analyze_essay(
     except:
         full_analysis = "AI 诊断暂时不可用 [RESULT] 学业:0.5, 人际:0.5, 情绪:0.5, 自我:0.5"
 
-    # 3. 数据解析
     score_match = re.search(r"学业:(\d\.\d+), 人际:(\d\.\d+), 情绪:(\d\.\d+), 自我:(\d\.\d+)", full_analysis)
     s = [float(score_match.group(i)) for i in range(1, 5)] if score_match else [0.5, 0.5, 0.5, 0.5]
 
-    # 4. 封装结果返回给 Java
     return {
         "studentId": student_id,
         "content": content,
