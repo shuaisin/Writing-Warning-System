@@ -7,19 +7,19 @@
         <option value="小明">小明</option>
         <option value="小红">小红</option>
       </select>
-      <button class="btn-refresh" @click="refreshData">🔄 刷新</button>
+      <button class="btn-refresh" @click="refreshData">刷新</button>
     </div>
 
     <!-- 模拟评估触发按钮 -->
     <div class="action-bar">
       <button class="btn btn-trigger" @click="triggerIntervention">
-        ⚠️ 模拟系统评估（消极≥3次）→ 发放一级任务
+        模拟系统评估（消极≥3次）→ 发放一级任务
       </button>
     </div>
 
     <!-- 心理波动图 -->
     <div class="card chart-card">
-      <h3>📈 心理波动趋势</h3>
+      <h3>心理波动趋势</h3>
       <div ref="chartRef" class="chart-container"></div>
     </div>
 
@@ -27,13 +27,13 @@
     <div class="two-columns">
       <!-- 左侧任务列表 -->
       <div class="card">
-        <h3>📋 干预任务列表</h3>
+        <h3>干预任务列表</h3>
         <div v-if="tasks.length === 0" class="empty-state">暂无任务，点击上方按钮触发</div>
         <div v-for="t in tasks" :key="t.id" class="task-item">
           <div class="task-info">
             <span class="task-level" :class="'level-' + t.level">{{ t.level === 1 ? '一级' : '二级' }}</span>
             <span class="task-status">{{ t.status }}</span>
-            <span class="task-assigned">👤 {{ t.assignedTo }}</span>
+            <span class="task-assigned">{{ t.assignedTo }}</span>
           </div>
           <div class="task-actions" v-if="t.status === 'pending' && t.level === 1">
             <button class="btn-action good" @click="handleTeacherDecision('好转')">✅ 好转</button>
@@ -44,16 +44,16 @@
 
       <!-- 右侧交流与分析 -->
       <div class="card">
-        <h3>💬 交流记录 & 心理分析</h3>
+        <h3>交流记录 & 心理分析</h3>
         <!-- 快捷交流 -->
         <div class="note-input">
           <textarea v-model="noteContent" placeholder="输入简短沟通内容..." rows="2"></textarea>
-          <button class="btn-submit" @click="submitNote">✉️ 提交记录</button>
+          <button class="btn-submit" @click="submitNote">提交记录</button>
         </div>
 
         <!-- 心理分析表单 -->
         <div class="analysis-form">
-          <h4>📝 心理多维分析记录</h4>
+          <h4>心理多维分析记录</h4>
           <div class="analysis-field">
             <label>学业压力：</label>
             <input type="text" v-model="analysisForm.academicPressure" placeholder="描述学业压力...">
@@ -78,12 +78,12 @@
             <label>其他补充：</label>
             <textarea v-model="analysisForm.extra" placeholder="任何额外信息..." rows="2"></textarea>
           </div>
-          <button class="btn-submit" @click="submitAnalysis">📋 保存心理分析记录</button>
+          <button class="btn-submit" @click="submitAnalysis">保存心理分析记录</button>
         </div>
 
         <!-- 历史分析记录 -->
         <div v-if="analysisHistory.length > 0" class="analysis-history">
-          <h4>📜 历史心理分析记录</h4>
+          <h4>历史心理分析记录</h4>
           <div v-for="(a, idx) in analysisHistory" :key="idx" class="analysis-item">
             <div class="analysis-meta">【{{ a.role }}】{{ a.timestamp }}</div>
             <div><strong>学业压力：</strong>{{ a.academicPressure || '—' }}</div>
