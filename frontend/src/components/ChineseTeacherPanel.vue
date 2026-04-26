@@ -32,7 +32,7 @@
 
     <section class="card history-section">
       <div class="card-header">
-        <h3>📋 诊断报告记录</h3>
+        <h3>诊断报告记录</h3>
         <button @click="fetchHistory" class="refresh-btn">🔄 刷新列表</button>
       </div>
 
