@@ -33,10 +33,16 @@ public class Composition {
     
     @Column(nullable = false)
     private LocalDateTime submitTime;
+
+    private Double emotionalValence;    // 情感效价 (0-1)
+    private Double anxietyScore;         // 焦虑
+    private Double depressionScore;      // 抑郁
+    private Double positiveThinking;     // 积极
     
     private Boolean hasPsychologicalIssue;
     
+    @Column(columnDefinition = "TEXT")
     private String analysisResult;
     
-    private Boolean transferredToPsychologist;
+    private Boolean transferredToPsychologist = false;
 }
