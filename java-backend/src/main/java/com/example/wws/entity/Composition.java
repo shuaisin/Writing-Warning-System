@@ -34,10 +34,10 @@ public class Composition {
     @Column(nullable = false)
     private LocalDateTime submitTime;
 
-    private Double emotionalValence;    // 情感效价 (0-1)
-    private Double anxietyScore;         // 焦虑
-    private Double depressionScore;      // 抑郁
-    private Double positiveThinking;     // 积极
+    private Double academicScore; // 学业压力
+    private Double socialScore;   // 人际关系
+    private Double emotionScore;  // 情绪状态
+    private Double selfScore;     // 自我认知
     
     private Boolean hasPsychologicalIssue;
     
