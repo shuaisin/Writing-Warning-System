@@ -2,7 +2,7 @@
   <div class="teacher-panel">
     <!-- 学生选择栏 -->
     <div class="student-bar">
-      <label>👥 当前学生：</label>
+      <label>当前学生：</label>
       <select v-model="currentStudent" class="student-select">
         <option value="小明">小明</option>
         <option value="小红">小红</option>
