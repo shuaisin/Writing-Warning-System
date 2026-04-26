@@ -4,7 +4,6 @@
     <nav class="navbar">
       <div class="nav-container">
         <div class="logo">
-          <span class="logo-icon">📝</span>
           <span class="logo-text">作文心理分析系统</span>
         </div>
         <div class="nav-links">
@@ -30,9 +29,9 @@
         </div>
       </div>
       <div class="hero-image">
-        <div class="floating-card">🧠 情绪识别</div>
-        <div class="floating-card">📈 动态干预</div>
-        <div class="floating-card">👥 多角色协同</div>
+        <div class="floating-card">情绪识别</div>
+        <div class="floating-card">动态干预</div>
+        <div class="floating-card">多角色协同</div>
       </div>
     </section>
 
@@ -42,32 +41,26 @@
         <h2 class="section-title">核心功能</h2>
         <div class="features-grid">
           <div class="feature-card">
-            <div class="feature-icon">📚</div>
             <h3>作文智能存档</h3>
             <p>语文老师批量上传作文，系统自动进行情感分析，实时监测学生心理状态。</p>
           </div>
           <div class="feature-card">
-            <div class="feature-icon">📊</div>
             <h3>心理波动趋势</h3>
             <p>可视化图表展示学生心理指标变化，帮助老师快速定位需要干预的学生。</p>
           </div>
           <div class="feature-card">
-            <div class="feature-icon">🔄</div>
             <h3>多级干预流转</h3>
             <p>班主任→心理老师→家长，任务自动流转，确保每个学生得到及时帮助。</p>
           </div>
           <div class="feature-card">
-            <div class="feature-icon">💬</div>
             <h3>交流记录与分析</h3>
             <p>班主任和心理老师可记录沟通内容，并填写结构化心理评估报告。</p>
           </div>
           <div class="feature-card">
-            <div class="feature-icon">👥</div>
             <h3>多角色工作台</h3>
             <p>语文老师、班主任、心理老师、管理员，各自拥有专属操作界面。</p>
           </div>
           <div class="feature-card">
-            <div class="feature-icon">⚙️</div>
             <h3>灵活部署</h3>
             <p>支持本地化部署，数据安全可控，未来可接入真实数据库和AI模型。</p>
           </div>
