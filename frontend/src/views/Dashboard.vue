@@ -17,7 +17,7 @@
     <main class="content-area">
       <div class="container">
         <ChineseTeacherPanel v-if="userRole === '语文老师'" />
-        <ClassTeacherPanel v-else-if="userRole === '班主任'" />
+        <HeadTeacherPanel v-else-if="userRole === '班主任'" />
         <PsychologistPanel v-else-if="userRole === '心理老师'" />
         <AdminPanel v-else-if="userRole === '管理员'" />
       </div>
@@ -29,9 +29,9 @@
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import ChineseTeacherPanel from '../components/ChineseTeacherPanel.vue'
-import ClassTeacherPanel from '../components/ClassTeacherPanel.vue'
 import PsychologistPanel from '../components/PsychologistPanel.vue'
 import AdminPanel from '../components/AdminPanel.vue'
+import HeadTeacherPanel from "../components/HeadTeacherPanel.vue";
 
 const router = useRouter()
 const userRole = ref('')
