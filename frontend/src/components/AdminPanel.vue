@@ -1,7 +1,7 @@
 <template>
   <div class="admin-panel">
     <div class="card">
-      <h3>👥 用户管理</h3>
+      <h3>用户管理</h3>
 
       <!-- 角色筛选栏 -->
       <div class="filter-bar">
@@ -63,7 +63,7 @@
 
       <!-- 添加用户表单 -->
       <div class="add-user-section">
-        <h4>➕ 添加新用户</h4>
+        <h4>添加新用户</h4>
         <div class="add-form">
           <input v-model="newUserName" placeholder="用户名" class="add-input" />
           <select v-model="newUserRole" class="add-select">
