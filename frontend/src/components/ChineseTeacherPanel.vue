@@ -2,7 +2,7 @@
   <div class="panel-container">
     <section class="card upload-section">
       <div class="card-header">
-        <h3>🚀 心理指标深度诊断 (KG + 隐喻识别)</h3>
+        <h3>心理指标深度诊断</h3>
         <span class="badge">AI 赋能</span>
       </div>
       
