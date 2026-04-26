@@ -1,24 +1,24 @@
 <template>
   <div class="psychologist-panel">
     <div class="student-bar">
-      <label>👥 当前学生：</label>
+      <label>当前学生：</label>
       <select v-model="currentStudent" class="student-select">
         <option value="小明">小明</option>
         <option value="小红">小红</option>
       </select>
-      <button class="btn-refresh" @click="refreshData">🔄 刷新</button>
+      <button class="btn-refresh" @click="refreshData">刷新</button>
     </div>
 
     <!-- 心理波动图 -->
     <div class="card chart-card">
-      <h3>📈 心理波动趋势</h3>
+      <h3>心理波动趋势</h3>
       <div ref="chartRef" class="chart-container"></div>
     </div>
 
     <div class="two-columns">
       <!-- 左侧显示二级任务列表 -->
       <div class="card">
-        <h3>📋 需心理老师干预的任务</h3>
+        <h3>需心理老师干预的任务</h3>
         <div v-if="tasks.length === 0" class="empty-state">暂无待处理任务</div>
         <div v-for="t in tasks" :key="t.id" class="task-item">
           <div class="task-info">
@@ -35,23 +35,23 @@
 
       <!-- 右侧交流与分析（与班主任相同） -->
       <div class="card">
-        <h3>💬 交流记录 & 心理分析</h3>
+        <h3>交流记录 & 心理分析</h3>
         <div class="note-input">
           <textarea v-model="noteContent" placeholder="输入简短沟通内容..." rows="2"></textarea>
-          <button class="btn-submit" @click="submitNote">✉️ 提交记录</button>
+          <button class="btn-submit" @click="submitNote">提交记录</button>
         </div>
         <div class="analysis-form">
-          <h4>📝 心理多维分析记录</h4>
+          <h4>心理多维分析记录</h4>
           <div class="analysis-field"><label>学业压力：</label><input type="text" v-model="analysisForm.academicPressure" placeholder="..."></div>
           <div class="analysis-field"><label>人际关系：</label><input type="text" v-model="analysisForm.socialRelationship" placeholder="..."></div>
           <div class="analysis-field"><label>情绪状态：</label><input type="text" v-model="analysisForm.emotionalState" placeholder="..."></div>
           <div class="analysis-field"><label>自我认知：</label><input type="text" v-model="analysisForm.selfCognition" placeholder="..."></div>
           <div class="analysis-field"><label>专家报告：</label><textarea v-model="analysisForm.expertReport" rows="3"></textarea></div>
           <div class="analysis-field"><label>其他补充：</label><textarea v-model="analysisForm.extra" rows="2"></textarea></div>
-          <button class="btn-submit" @click="submitAnalysis">📋 保存心理分析记录</button>
+          <button class="btn-submit" @click="submitAnalysis">保存心理分析记录</button>
         </div>
         <div v-if="analysisHistory.length > 0" class="analysis-history">
-          <h4>📜 历史心理分析记录</h4>
+          <h4>历史心理分析记录</h4>
           <div v-for="(a, idx) in analysisHistory" :key="idx" class="analysis-item">
             <div class="analysis-meta">【{{ a.role }}】{{ a.timestamp }}</div>
             <div><strong>学业压力：</strong>{{ a.academicPressure || '—' }}</div>
