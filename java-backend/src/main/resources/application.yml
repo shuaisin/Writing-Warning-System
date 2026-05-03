@@ -4,9 +4,8 @@ server:
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/wws_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
-    
     username: root
-    password: //记得写密码！记得写密码！记得写密码！自己的数据库密码！-数据库无法启动就用管理员启动、任务管理器强制启动、csdn
+    password: //记得写密码！记得写密码！记得写密码！自己的数据库密码！-数据库无法启动就用管理员启动、任务管理器强制启动、csdn，然后要带双引号
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
@@ -18,4 +17,4 @@ spring:
 
 python:
   api:
-    url: http://localhost:8000/analyze
+    url: http://localhost:8000
