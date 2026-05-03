@@ -1,4 +1,3 @@
-
 package com.example.wws.entity;
 
 import jakarta.persistence.*;
@@ -32,17 +31,9 @@ public class Composition {
     private String imagePath;
     
     @Column(nullable = false)
-    private LocalDateTime submitTime;
-
-    private Double academicScore; // 学业压力
-    private Double socialScore;   // 人际关系
-    private Double emotionScore;  // 情绪状态
-    private Double selfScore;     // 自我认知
+    private LocalDateTime createTime;
     
-    private Boolean hasPsychologicalIssue;
-    
-    @Column(columnDefinition = "TEXT")
-    private String analysisResult;
-    
-    private Boolean transferredToPsychologist = false;
+    @OneToOne
+    @JoinColumn(name = "previous_composition_id")
+    private Composition previousComposition;
 }

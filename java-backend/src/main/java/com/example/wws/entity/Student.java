@@ -1,4 +1,3 @@
-
 package com.example.wws.entity;
 
 import jakarta.persistence.*;
@@ -22,14 +21,10 @@ public class Student {
     @Column(unique = true, nullable = false)
     private String studentId;
     
-    private String className;
-    private Integer grade;
-    
     @ManyToOne
-    @JoinColumn(name = "school_id", nullable = false)
-    private School school;
+    @JoinColumn(name = "class_id", nullable = false)
+    private SchoolClass schoolClass;
     
-    @ManyToOne
-    @JoinColumn(name = "head_teacher_id")
-    private User headTeacher;
+    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
+    private StudentProfile profile;
 }
