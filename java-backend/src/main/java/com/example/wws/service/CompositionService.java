@@ -55,14 +55,12 @@ public class CompositionService {
             // 调用 Python AI 获取分析结果
             Map<String, Object> result = analyzeComposition(item.getContent());
 
-            // 核心任务：将 AI 返回的四个维度分值存入数据库
-            // 注意：这里假设 Python 返回的 key 是下划线命名法
+            // 将 AI 返回的四个维度分值存入数据库
             composition.setAcademicScore(Double.valueOf(result.getOrDefault("academic_score", 0.0).toString()));
             composition.setSocialScore(Double.valueOf(result.getOrDefault("social_score", 0.0).toString())); // 人际关系
             composition.setEmotionScore(Double.valueOf(result.getOrDefault("emotion_score", 0.0).toString()));
             composition.setSelfScore(Double.valueOf(result.getOrDefault("self_score", 0.0).toString()));
 
-            // 预警逻辑
             composition.setHasPsychologicalIssue((Boolean) result.getOrDefault("has_issue", false));
             composition.setAnalysisResult((String) result.getOrDefault("result", "未生成分析报告"));
 
@@ -72,13 +70,10 @@ public class CompositionService {
         return savedCompositions;
     }
 
-    /**
-     * 内部方法：对接 Python 服务
-     */
+    // 对接 Python 服务
     @SuppressWarnings("unchecked")
     private Map<String, Object> analyzeComposition(String content) {
         try {
-            // 修正 URL 拼接逻辑，确保路径正确
             String baseUrl = pythonApiUrl;
             String fullUrl = baseUrl.endsWith("/") ? baseUrl + "analyze" : baseUrl + "/analyze";
 
