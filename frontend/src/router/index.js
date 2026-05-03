@@ -4,7 +4,7 @@ import Login from '../views/Login.vue'
 import Dashboard from '../views/Dashboard.vue'
 
 const routes = [
-  { path: '/', name: 'Home', component: HomePage },          // 新首页
+  { path: '/', name: 'Home', component: HomePage },          
   { path: '/login', component: Login },
   { 
     path: '/dashboard', 
