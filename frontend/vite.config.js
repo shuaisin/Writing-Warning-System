@@ -8,12 +8,12 @@ export default defineConfig({
         hmr: {
             overlay: true
         },
-        // --- 新增以下代理配置 ---
+        // --- 代理配置 ---
         proxy: {
             '/api': {
-                target: 'http://localhost:8080', // 这里对准你截图里的 8080 端口
+                target: 'http://localhost:8080', 
                 changeOrigin: true,
-                rewrite: (path) => path.replace(/^\/api/, '') // 如果后端接口没带 /api 前缀，这一行很重要
+                rewrite: (path) => path.replace(/^\/api/, '') 
             }
         }
     }
