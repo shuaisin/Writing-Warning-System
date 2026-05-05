@@ -7,15 +7,15 @@ import base64
 
 app = FastAPI(title="Inaudible Voice AI Service")
 
-BAIDU_AK = "qm9PQkpmHxNcZ9muPvgxym29"
+BAIDU_AK = "禁止偷用！"
 BAIDU_SK = "g1GMnvBGyng53ihI3BU8eazJUDMIDXU2"
 
-DEEPSEEK_KEY = "sk-d5db37f09e7648999e8a415693add4c0"
+DEEPSEEK_KEY = "自己申请去！禁止偷用！"
 DEEPSEEK_URL = "https://api.deepseek.com/v1/chat/completions"
 
 NEO4J_URI = "neo4j+s://b84abc8b.databases.neo4j.io"
 NEO4J_USER = "neo4j"
-NEO4J_PWD = "RIssSnTGdtSQUUPxSkE5xxRc7NRxU4w-uPjsjZZDkLM"
+NEO4J_PWD = "禁止偷用！"
 
 try:
     driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USER, NEO4J_PWD))
