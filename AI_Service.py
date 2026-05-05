@@ -8,12 +8,12 @@ import base64
 app = FastAPI(title="Inaudible Voice AI Service")
 
 BAIDU_AK = "禁止偷用！"
-BAIDU_SK = "g1GMnvBGyng53ihI3BU8eazJUDMIDXU2"
+BAIDU_SK = "自己申请去！md哪个小偷把我key给偷了！"
 
 DEEPSEEK_KEY = "自己申请去！禁止偷用！"
 DEEPSEEK_URL = "https://api.deepseek.com/v1/chat/completions"
 
-NEO4J_URI = "neo4j+s://b84abc8b.databases.neo4j.io"
+NEO4J_URI = "neo4j+s://自己创建去！偷用了我6块钱的key！还钱！小偷还钱！"
 NEO4J_USER = "neo4j"
 NEO4J_PWD = "禁止偷用！"
 
